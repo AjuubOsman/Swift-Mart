@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\ProfileUpdateRequest;
+use App\Models\User;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -56,5 +57,21 @@ class ProfileController extends Controller
         $request->session()->regenerateToken();
 
         return Redirect::to('/');
+    }
+    public function shippinginformation(Request $request)
+    {
+
+        $user = User::findOrFail(Auth::id());
+
+
+        $user->update([
+            'street' => $request->input('street'),
+            'city' => $request->input('city'),
+            'zipcode' => $request->input('zipcode'),
+            'country' => $request->input('country'),
+        ]);
+
+        return Redirect::route('profile.edit')->with('message', 'Shipping Information Updated');
+
     }
 }
