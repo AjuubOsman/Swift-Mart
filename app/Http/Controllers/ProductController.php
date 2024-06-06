@@ -44,16 +44,10 @@ class ProductController extends Controller
         ]);
 
         $product = Product::find($validatedData['id']);
+        $product->delete();
 
-        if ($product) {
-            $product->update([
-                'name' => $validatedData['name'],
-                'description' => $validatedData['description'],
-                'price' => $validatedData['price'],
-                'inventory' => $validatedData['inventory'],
-                'category_id' => $validatedData['category_id'],
-            ]);
-        }
+        Product::create($validatedData);
+
         return redirect()->route('products')->with('message', 'Product Succesfully Updated');
 
     }

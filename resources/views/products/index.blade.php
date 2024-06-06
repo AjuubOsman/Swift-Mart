@@ -1,4 +1,6 @@
-<x-app-layout>
+@if(isset(auth()->user()->isadmin) && auth()->user()->isadmin == 1)
+
+    <x-app-layout>
     @if (session('message'))
 
     <x-slot name="header">
@@ -38,3 +40,6 @@
         </div>
     </div>
 </x-app-layout>
+@else
+@include('auth.login')
+@endif

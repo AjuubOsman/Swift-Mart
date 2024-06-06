@@ -65,7 +65,7 @@
 
             <div>
                 <x-input-label :value="__('Inventory')" />
-                <x-text-input name="inventory" type="text" class="mt-1 block w-full" />
+                <x-text-input name="inventory" type="number" class="mt-1 block w-full" />
                 <x-input-error :messages="$errors->updateInventory->get('inventory')" class="mt-2" />
             </div>
 
@@ -117,7 +117,7 @@
 
         <div>
             <x-input-label :value="__('Inventory')" />
-            <x-text-input name="inventory" id="productInventory" type="text" class="mt-1 block w-full" />
+            <x-text-input name="inventory" id="productInventory" type="number" class="mt-1 block w-full" />
             <x-input-error :messages="$errors->updateInventory->get('inventory')" class="mt-2" />
         </div>
 
